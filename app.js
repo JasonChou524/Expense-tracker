@@ -2,6 +2,8 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const app = express()
 
+require('dotenv').config()
+
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbss' }))
 app.set('view engine', 'hbs')
 
