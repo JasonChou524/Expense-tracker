@@ -3,8 +3,9 @@ const exphbs = require('express-handlebars')
 const app = express()
 
 require('dotenv').config()
+require('./config/mongoose')
 
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbss' }))
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 app.get('/', (req, res) => {
