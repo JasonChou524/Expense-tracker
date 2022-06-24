@@ -7,7 +7,13 @@ const app = express()
 require('dotenv').config()
 require('./config/mongoose')
 
-app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.engine(
+  'hbs',
+  exphbs({
+    defaultLayout: 'main',
+    extname: '.hbs',
+  })
+)
 app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({ extended: true }))

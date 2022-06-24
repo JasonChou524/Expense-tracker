@@ -2,6 +2,7 @@
   {{#each records}}
     <li>
       <h2>{{this.categoryId.name}} {{this.name}}</h2>
+      <a href='/records/{{this._id}}/edit'>Edit</a>
     </li>
   {{/each}}
 </ul>
