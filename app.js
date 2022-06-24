@@ -8,6 +8,8 @@ const app = express()
 require('dotenv').config()
 require('./config/mongoose')
 
+const PORT = process.env.PORT
+
 app.engine(
   'hbs',
   exphbs({
@@ -23,6 +25,6 @@ app.use(methodOverride('_method'))
 
 app.use(routes)
 
-app.listen(3000, () => {
-  console.log(`Express is listening on http://localhost:3000`)
+app.listen(PORT, () => {
+  console.log(`App is running on http://localhost:${PORT}`)
 })
