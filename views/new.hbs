@@ -1,0 +1,36 @@
+<h2>new</h2>
+
+<form action='/records' method='POST'>
+  <div class=''>
+    <label for=''>
+      name
+      <input type='text' name='name' required />
+    </label>
+  </div>
+  <div>
+    <label for=''>
+      Date
+      <input type='date' name='date' required />
+    </label>
+  </div>
+  <div>
+    <label for=''>
+      amount
+      <input type='number' min='1' name='amount' required />
+    </label>
+  </div>
+  <div>
+    <label for=''>
+      category
+      <select name='category' id='' required>
+        {{#each categorys}}
+          <option value='{{this._id}}'>{{this.name}}</option>
+        {{/each}}
+      </select>
+    </label>
+  </div>
+  <div>
+    <button type='submit'>送出</button>
+    <a href='/'>Back</a>
+  </div>
+</form>
