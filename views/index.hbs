@@ -3,6 +3,13 @@
     <li>
       <h2>{{this.categoryId.name}} {{this.name}}</h2>
       <a href='/records/{{this._id}}/edit'>Edit</a>
+      <form
+        action='./records/{{this._id}}?_method=DELETE'
+        method='POST'
+        style='display: inline;'
+      >
+        <button type='submit'>Delete</button>
+      </form>
     </li>
   {{/each}}
 </ul>
