@@ -1,1 +1,7 @@
-<h2>Index</h2>
+<ul>
+  {{#each records}}
+    <li>
+      <h2>{{this.categoryId.name}} {{this.name}}</h2>
+    </li>
+  {{/each}}
+</ul>

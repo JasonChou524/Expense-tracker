@@ -7,8 +7,10 @@ const { render } = require('express/lib/response')
 
 router.get('/', (req, res) => {
   Record.find()
+    .populate('categoryId')
     .lean()
     .then((records) => {
+      console.log(records)
       res.render('index', { records })
     })
     .catch((err) => console.error(err))
