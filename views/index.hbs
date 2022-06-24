@@ -1,7 +1,10 @@
 <ul>
   {{#each records}}
     <li>
-      <h2>{{this.categoryId.name}} {{this.name}}</h2>
+      <h2>{{this.categoryId.name}}
+        {{this.name}}
+        {{this.date}}
+        {{this.amount}}元</h2>
       <a href='/records/{{this._id}}/edit'>Edit</a>
       <form
         action='./records/{{this._id}}?_method=DELETE'

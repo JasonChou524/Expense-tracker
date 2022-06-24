@@ -8,9 +8,12 @@ router.get('/', (req, res) => {
     .populate('categoryId')
     .lean()
     .then((records) => {
+      records.forEach((record) => {
+        record.date = record.date.toISOString().slice(0, 10)
+      })
       res.render('index', { records })
     })
-    .catch((err) => console.error(err))
+    .catch((error) => console.error(error))
 })
 
 module.exports = router
