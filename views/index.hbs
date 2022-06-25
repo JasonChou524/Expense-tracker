@@ -10,7 +10,9 @@
 <ul>
   {{#each records}}
     <li>
-      <h2>{{this.categoryId.name}}
+      <h2>
+        <span><i class='{{this.categoryId.icon}}'></i></span>
+        {{this.categoryId.name}}
         {{this.name}}
         {{this.date}}
         {{this.amount}}元</h2>
