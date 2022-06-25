@@ -1,3 +1,12 @@
+<form action='/'>
+  <select name='category' id='category' onchange='form.submit()'>
+    <option selected>{{categorySelectName}}</option>
+    {{#each categories}}
+      <option value='{{this._id}}'>{{this.name}}</option>
+    {{/each}}
+  </select>
+</form>
+<h2>總金額：{{totalAmount}}</h2>
 <ul>
   {{#each records}}
     <li>
