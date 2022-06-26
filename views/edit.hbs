@@ -1,34 +1,39 @@
-<h2>Edit</h2>
-<form action='/records/{{record._id}}?_method=PUT' method='POST'>
-  <div class=''>
-    <label for=''>
-      name
-      <input type='text' name='name' value='{{record.name}}' required />
-    </label>
+<form
+  action='/records/{{record._id}}?_method=PUT'
+  method='POST'
+  class='mt-5 d-flex flex-column align-items-center'
+>
+  <div class='d-flex justify-content-between mb-3'>
+    <span class=''>*必填欄位</span>
+    <h4 class='ms-4'>請修改你的支出</h4>
   </div>
-  <div>
-    <label for=''>
-      Date
-      <input type='date' name='date' value='{{record.date}}' required />
-    </label>
-  </div>
-  <div>
-    <label for=''>
-      amount
+
+  <div class='container' style='max-width: 450px'>
+    <div class='row mb-3'>
+      <label for='name' class='col-2 col-form-label'>名稱*:</label>
       <input
-        type='number'
-        min='1'
-        name='amount'
-        value='{{record.amount}}'
+        type='text'
+        class='col-10'
+        name='name'
+        id='name'
+        value='{{record.name}}'
         required
       />
-    </label>
-  </div>
-  <div>
-    <label for=''>
-      category
-      <select name='category' required>
-
+    </div>
+    <div class='row mb-3'>
+      <label for='date' class='col-2 col-form-label'>日期*:</label>
+      <input
+        type='date'
+        class='col-10'
+        name='date'
+        id='date'
+        value='{{record.date}}'
+        required
+      />
+    </div>
+    <div class='row mb-3'>
+      <label for='category' class='col-2 col-form-label'>類別*:</label>
+      <select name='category' id='category' class='col-10' required>
         <option
           value='{{record.categoryId._id}}'
           selected
@@ -37,10 +42,22 @@
           <option value='{{this._id}}'>{{this.name}}</option>
         {{/each}}
       </select>
-    </label>
+    </div>
+    <div class='row mb-3'>
+      <label for='amount' class='col-2 col-form-label'>金額*:</label>
+      <input
+        type='number'
+        class='col-10'
+        name='amount'
+        id='amount'
+        value='{{record.amount}}'
+        required
+      />
+    </div>
+    <div class='d-flex justify-content-center mt-4'>
+      <button type='submit' class='btn btn-primary btn-block ms-5'>送出</button>
+    </div>
+
   </div>
-  <div>
-    <button type='submit'>送出</button>
-    <a href='/'>Back</a>
-  </div>
+
 </form>
