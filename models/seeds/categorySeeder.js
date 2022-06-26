@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const Category = require('../category')
 const db = require('../../config/mongoose')
-const data = require('../../category.json').data
+const data = require('./categoryData.json').data
 
 const createData = (category) => {
   return Category.create({
@@ -13,12 +13,12 @@ const createData = (category) => {
   })
 }
 
-const actions = data.map(createData)
+const createCategory = data.map(createData)
 
 db.once('open', () => {
-  return Promise.all(actions)
+  return Promise.all(createCategory)
     .then(() => {
-      console.log('Category done')
+      console.log('CategorySeeder done!')
       process.exit()
     })
     .catch((err) => console.error(err))
