@@ -20,13 +20,17 @@
       <!-- navigation -->
       <nav class='navbar navbar-light bg-light'>
         <div class='container'>
+          <a class='navbar-brand' href='/'>
+            {{#if isAuthenticated}}{{user.name}}的{{/if}}
+            記帳簿
+          </a>
+
           {{#if isAuthenticated}}
             <div>
-              <a class='btn btn-primary' href='/records/new'>Create</a>
-              <a href='/users/logout' class='btn btn-danger'>Logout</a>
+              <a href='/users/logout' class='btn btn-danger'>登出</a>
             </div>
           {{else}}
-            <a href='/users/login' class='btn btn-primary'>Login</a>
+            <a href='/users/login' class='btn btn-primary'>登入</a>
           {{/if}}
         </div>
       </nav>
