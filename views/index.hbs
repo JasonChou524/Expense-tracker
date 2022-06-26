@@ -1,29 +1,59 @@
-<form action='/'>
-  <select name='category' id='category' onchange='form.submit()'>
-    <option selected>{{categorySelectName}}</option>
-    {{#each categories}}
-      <option value='{{this._id}}'>{{this.name}}</option>
+<div class='container d-flex flex-column mt-5' style='max-width: 500px;'>
+  <form action='/'>
+    <select
+      name='category'
+      id='category'
+      class='form-select'
+      onchange='form.submit()'
+    >
+      <option selected>{{categorySelectName}}</option>
+      {{#each categories}}
+        <option value='{{this._id}}'>{{this.name}}</option>
+      {{/each}}
+    </select>
+  </form>
+
+  <div class='total-amount d-flex mb-2'>
+    <span>總金額：</span>
+    <h1
+      class='ms-4'
+      style='color: #cc690d; font-weight: 700; '
+    >{{totalAmount}}</h1>
+  </div>
+
+  <table class='table table-striped'>
+    {{#each records}}
+      <tr class='ps-4'>
+        <td class='align-middle text-center fs-1'>
+          <i class='{{this.categoryId.icon}}' style='color: #7feae3;'></i>
+        </td>
+        <td class='align-middle fs-4'>
+          <p class='mb-0'>{{this.name}}</p>
+          <span style='font-size: small;'>{{this.date}}</span>
+        </td>
+        <td class='align-middle fs-4 text-end'>
+          <p class='mb-0'>{{this.amount}}</p>
+        </td>
+        <td class='align-middle text-center'>
+          <a
+            href='/records/{{this._id}}/edit'
+            class='text-decoration-none text-body'
+          >修改</a>
+        </td>
+        <td class='align-middle'>
+          <form
+            action='./records/{{this._id}}?_method=DELETE'
+            method='POST'
+            style='display: inline;'
+          >
+            <button type='submit' class='btn btn-light'>刪除</button>
+          </form>
+        </td>
+      </tr>
     {{/each}}
-  </select>
-</form>
-<h2>總金額：{{totalAmount}}</h2>
-<ul>
-  {{#each records}}
-    <li>
-      <h2>
-        <span><i class='{{this.categoryId.icon}}'></i></span>
-        {{this.categoryId.name}}
-        {{this.name}}
-        {{this.date}}
-        {{this.amount}}元</h2>
-      <a href='/records/{{this._id}}/edit'>Edit</a>
-      <form
-        action='./records/{{this._id}}?_method=DELETE'
-        method='POST'
-        style='display: inline;'
-      >
-        <button type='submit'>Delete</button>
-      </form>
-    </li>
-  {{/each}}
-</ul>
+  </table>
+
+  <div class='d-flex justify-content-center mt-5'>
+    <a href='/records/new' class='btn btn-primary btn-block'>新增支出</a>
+  </div>
+</div>
